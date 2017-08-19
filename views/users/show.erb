@@ -1,0 +1,8 @@
+<h2><%= @user.username %> Works</h2>
+<ul>
+<% @works.each do |work| %>
+  <li><a href="/work-view/<%= work.id %>"> <%= work.name %>!</a></li>
+<% end %>
+</ul>
+
+<!-- <a href="/work-view/<= work.id >"--> 
