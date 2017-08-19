@@ -7,21 +7,13 @@ get '/' do
 end
 
 get '/sign-up' do
-  "Sign-Up Sheet Coming!"
+  erb :"files/signup"
 end
 
 
 get '/log-in' do
   "Log-In Sheet Coming!"
 end
-
-
-get '/welcome/:id' do
-  id = params[:id].to_i
-  @user = User.find(id)
-  "This is your page, #{@user.username}."
-end
-
 
 get '/work-edit/id' do
   "Need to Work on ID stuff also where to edit work"
@@ -37,7 +29,7 @@ end
 get '/work-view/:id' do
   id = params[:id].to_i
   @work = Work.find(id)
-  @user = User.find(work.user_id)
+  @user = User.find(@work.user_id)
   erb :"works/view"
 end
 
@@ -58,8 +50,4 @@ end
 get '/graduation' do
     erb :"graduation/post", layout: :"graduation/layout"
   # Page where user can log in
-end
-
-get '/check' do 
-  "#{Work.all}"
 end
