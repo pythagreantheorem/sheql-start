@@ -1,28 +1,26 @@
- <section id="forms">
-                    <div class="container">
-                        <div class="full-width">
-                            <div class="small-padding">
-                                <h2 class="blue-underline small-bottom-padding">Sign Up</h2>
-                            </div>
-                        </div>
-                        <div class="third">
-                            <div class="small-padding">
-                                <h3>Fill Out This Form</h3>
-                                <form>
-                                    <label>Username *</label>
-                                        <input type="text" placeholder="AmazingExcept">
-                                    
-                                    <label>Password *</label>
-                                        <input type="text" placeholder="******"
-                                        
-                                    <label>Email *</label>
-                                        <input type="email" placeholder="emily@example.com">
-                                         
-                                    <label>Age *</label>
-                                        <input type="number" placeholder="13">
-                                        
-                                        <input type="submit" value="Submit">
-                                </form>
-                            </div>
-                        </div>
-        <section>
+<hl>Sign Up</hl>
+
+<form action="/action_page.php">
+  Username:<br>
+  <input type="text" name="username"><br>
+  Password:<br>
+  <input type="text" name="password"><br>
+  Email<br>
+  <input type="text" name="email"><br>
+  Age<br>
+  <input type="integer" name="13"><br><br>
+  
+  <input type="submit" value="Submit">
+</form>
+<!--content: params["content"], date: Date.today, user: @user-->
+
+<% @user = User.new(username: params["username"], password: params["password"], email: params["email"], age: params["age"].to_i)%>
+
+<%saved = @user.save %>
+
+<%if saved%>
+<%redirect to("users/show")%>
+<%else%>
+<%redirect to("files/signup")%>
+<%end%> 
+     
