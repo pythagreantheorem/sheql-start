@@ -6,8 +6,20 @@ get '/' do
   end
 end
 
-get '/sign-up' do
+get '/signup' do
+  @user = User.new(username: params["username"].to_s, password: params["password"].to_s, age: params["age"].to_i)
   erb :"files/signup"
+end
+
+
+post '/signup' do
+  @user = User.new(username: params["username"].to_s, password: params["password"].to_s, age: params["age"].to_i)
+  
+  if @user.save
+    redirect to("my-works/#{@user.id}")
+  else
+    erb :"files/signup"
+  end
 end
 
 
@@ -15,10 +27,22 @@ get '/log-in' do
   "Log-In Sheet Coming!"
 end
 
-get '/work-edit/id' do
-  "Need to Work on ID stuff also where to edit work"
+get '/work-edit/:user_id' do
+  @id = params[:user_id].to_i
+  @work = Work.new()
+  erb :"works/create"
 end
 
+
+post '/work-edit/:user_id' do
+  @work = Work.new()
+  
+  if @work.save
+    redirect to("work-view/#{@work.id}")
+  else
+    erb :"works/create"
+  end
+end
 
 get '/works' do
   @works = Work.all
@@ -32,7 +56,6 @@ get '/work-view/:id' do
   @user = User.find(@work.user_id)
   erb :"works/view"
 end
-
 
 get '/my-works/:id' do
    id = params[:id].to_i

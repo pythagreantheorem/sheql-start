@@ -1,26 +1,12 @@
 <hl>Sign Up</hl>
 
-<form action="/action_page.php">
+<form method="POST" action="/signup">
   Username:<br>
   <input type="text" name="username"><br>
   Password:<br>
   <input type="text" name="password"><br>
-  Email<br>
-  <input type="text" name="email"><br>
   Age<br>
-  <input type="integer" name="13"><br><br>
+  <input type="integer" name="age"><br><br>
   
   <input type="submit" value="Submit">
 </form>
-<!--content: params["content"], date: Date.today, user: @user-->
-
-<% @user = User.new(username: params["username"], password: params["password"], email: params["email"], age: params["age"].to_i)%>
-
-<%saved = @user.save %>
-
-<%if saved%>
-<%redirect to("users/show")%>
-<%else%>
-<%redirect to("files/signup")%>
-<%end%> 
-     

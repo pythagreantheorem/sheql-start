@@ -25,8 +25,7 @@ ActiveRecord::Schema.define(version: 20170729173055) do
   create_table "works", force: :cascade do |t|
     t.bigint "user_id"
     t.string "name"
-    t.datetime "date"
-    t.string "post"
+    t.blob "content"
     t.index ["user_id"], name: "index_works_on_user_id"
   end
 
